@@ -34,7 +34,9 @@ app.use(
 
 app.use(express.json());
 
-// app.use(routes); 
+app.use(routes);
+
+// ----------BEGIN AUTH0 STUFF---------------
 
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
@@ -43,9 +45,9 @@ const checkJwt = jwt({
       jwksRequestsPerMinute: 5,
       jwksUri: 'https://utahfcc.us.auth0.com/.well-known/jwks.json'
 }),
-audience: 'https://booklist/api',
-issuer: 'https://utahfcc.us.auth0.com/',
-algorithms: ['RS256']
+  audience: 'https://booklist/api',
+  issuer: 'https://utahfcc.us.auth0.com/',
+  algorithms: ['RS256']
 });
 
 
@@ -56,7 +58,6 @@ app.get('/api/public', function(req, res) {
   });
 });
 
-// ----------BEGIN AUTH0 STUFF---------------
 // app.use(checkJwt);
 
 // This route needs authentication
