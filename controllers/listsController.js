@@ -17,7 +17,7 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 exports.getAllLists = async (req, res, next) => {
 	try {
 		const userId = req.user.sub;
-		const { rows } = await pg.query('SELECT * FROM lists WHERE userId = $1', [userId]);
+		const { rows } = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
 		res.status(200).json(rows);
 	} catch (error) {
 		next(error);
@@ -31,7 +31,7 @@ exports.getOneList = async (req, res, next) => {
 	try {
 		const userId = req.user.sub;
 		const { listId } = req.params;
-		const { rows } = await pg.query('SELECT * FROM lists WHERE userId = $1 AND listId = $2', [userId, listId]);
+		const { rows } = await pg.query('SELECT * FROM lists WHERE user_id = $1 AND list_id = $2', [userId, listId]);
 		res.status(200).json(rows);
 	} catch (error) {
 		next(error);
@@ -45,20 +45,12 @@ exports.createOneList = async (req, res, next) => {
 	try {
 		validateRequestBody(req, listsTableFields, next);
 
-    console.log(req.user);
-    console.log(req.user.sub);
-
 		const userId = req.user.sub;
-		const newList = { userId }
-
-    console.log(newList);
-
-
+		const newList = { user_id: userId }
 
 		for (const [key, value] of Object.entries(req.body)) {
 			newList[key] = value;
 		}
-    console.log(newList);
 
 		knex
 			.insert(newList)
@@ -101,15 +93,15 @@ exports.updateList = (req, res, next) => {
 		knex('lists')
 			.returning('*')
 			.where({
-				userId: userId,
-				listId: listId
+				user_id: userId,
+				list_id: listId
 			})
 			.update(toUpdate)
 			.then(results => {
 				const result = results[0];
 				res
 					.status(200)
-					.location(`${req.originalUrl}/${result.listId}`)
+					.location(`${req.originalUrl}/${result.list_id}`)
 					.json(result);
 			})
 			.catch(error => {
@@ -125,7 +117,7 @@ exports.updateList = (req, res, next) => {
 // @access Private
 exports.deleteList = async (req, res, next) => {
 	try {
-		const { ListId } = req.params;
+		const { listId } = req.params;
 
 		// //CHECK TO MAKE SURE listId IS A NUMBER
 		if (isNaN(listId)) {
@@ -134,7 +126,7 @@ exports.deleteList = async (req, res, next) => {
 			return next(error);
 		}
 
-		const { rowCount } = await pg.query('DELETE FROM lists WHERE listId = $1', [listId]);
+		const { rowCount } = await pg.query('DELETE FROM lists WHERE list_id = $1', [listId]);
 		if (rowCount === 1) {
 			res
 				.status(204)

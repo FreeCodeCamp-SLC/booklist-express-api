@@ -1,18 +1,18 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('books', table => {
-    table.increments('bookId').unique.notNullable
-    table.string('userId').notNullable
-    table.integer('listId').notNullable
+    table.increments('book_id').unique.notNullable
+    table.string('user_id').notNullable
+    table.integer('list_id').notNullable
     table.string('author', 255).notNullable
     table.string('title', 255).notNullable
-    table.string('imageUrl')
+    table.string('image_url')
     table.integer('pages')
-    table.integer('readingStatusId')
-    table.dateTime('dateStarted')
-    table.dateTime('dateFinished')
-		table.dateTime('createdOn').defaultTo(knex.fn.now())
-		table.dateTime('modifiedOn').defaultTo(knex.fn.now())
+    table.integer('reading_status_id')
+    table.dateTime('date_started')
+    table.dateTime('date_finished')
+		table.dateTime('created_on').defaultTo(knex.fn.now())
+		table.dateTime('modified_on').defaultTo(knex.fn.now())
   });
 };
 

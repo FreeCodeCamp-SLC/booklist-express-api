@@ -1,12 +1,12 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('lists', table => {
-    table.increments('listId').unique.notNullable
-    table.string('userId', 255).notNullable
+    table.increments('list_id').unique.notNullable
+    table.string('user_id', 255).notNullable
     table.string('name', 255).notNullable
     table.integer('year')
-		table.dateTime('createdOn').defaultTo(knex.fn.now())
-		table.dateTime('modifiedOn').defaultTo(knex.fn.now())
+		table.dateTime('created_on').defaultTo(knex.fn.now())
+		table.dateTime('modified_on').defaultTo(knex.fn.now())
   });
 };
 

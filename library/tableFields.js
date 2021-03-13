@@ -1,13 +1,13 @@
 'use strict';
 
 const listsTableFields = {
-	listId: {
+	list_id: {
 		required: false,
 		updateable: false,
 		dataType: 'NUMBER',
 		fieldSize: 'null'
 	},
-	userId: {
+	user_id: {
 		required: false,
 		updateable: false,
 		dataType: 'STRING',
@@ -25,13 +25,13 @@ const listsTableFields = {
 		dataType: 'NUMBER',
 		fieldSize: 'null'
 	},
-	createdOn: {
+	created_on: {
 		required: false,
 		updateable: false,
 		dataType: 'DATETIME',
 		fieldSize: 'null'
 	},
-	modifiedOn: {
+	modified_on: {
 		required: false,
 		updateable: true,
 		dataType: 'DATETIME',
@@ -40,19 +40,19 @@ const listsTableFields = {
 };
 
 const booksTableFields = {
-	bookId: {
+	book_id: {
 		required: false,
 		updateable: false,
 		dataType: 'NUMBER',
 		fieldSize: 'null'
 	},
-	userId: {
+	user_id: {
 		required: false,
 		updateable: false,
 		dataType: 'STRING',
 		fieldSize: { MIN: 1, MAX: 255 }
 	},
-	listId: {
+	list_id: {
 		required: true,
 		updateable: true,
 		dataType: 'NUMBER',
@@ -70,7 +70,7 @@ const booksTableFields = {
 		dataType: 'STRING',
 		fieldSize: { MIN: 1, MAX: 255 }
 	},
-	imageUrl: {
+	image_url: {
 		required: false,
 		updateable: true,
 		dataType: 'STRING',
@@ -82,31 +82,31 @@ const booksTableFields = {
 		dataType: 'NUMBER',
 		fieldSize: 'null'
 	},
-  readingStatusId: {
+  reading_status_id: {
 		required: false,
 		updateable: true,
 		dataType: 'NUMBER',
 		fieldSize: 'null'
 	},
-	dateStarted: {
+	date_started: {
 		required: false,
 		updateable: true,
 		dataType: 'DATETIME',
 		fieldSize: 'null'
 	},
-	dateFinished: {
+	date_finished: {
 		required: false,
 		updateable: true,
 		dataType: 'DATETIME',
 		fieldSize: 'null'
 	},
-	createdOn: {
+	created_on: {
 		required: false,
 		updateable: true,
 		dataType: 'DATETIME',
 		fieldSize: 'null'
 	},
-	modifiedOn: {
+	modified_on: {
 		required: false,
 		updateable: true,
 		dataType: 'DATETIME',
@@ -115,13 +115,13 @@ const booksTableFields = {
 };
 
 const readingStatusTableFields = {
-	readingStatusId: {
+	reading_status_id: {
 		required: false,
 		updateable: false,
 		dataType: 'NUMBER',
 		fieldSize: 'null'
 	},
-	userId: {
+	user_id: {
 		required: false,
 		updateable: false,
 		dataType: 'STRING',
@@ -139,13 +139,13 @@ const readingStatusTableFields = {
 		dataType: 'NUMBER',
 		fieldSize: 'null'
 	},
-	createdOn: {
+	created_on: {
 		required: false,
 		updateable: true,
 		dataType: 'DATETIME',
 		fieldSize: 'null'
 	},
-	modifiedOn: {
+	modified_on: {
 		required: true,
 		updateable: true,
 		dataType: 'DATETIME',
