@@ -60,7 +60,7 @@ exports.createOneList = async (req, res, next) => {
 				const results = result[0];
 				res
 					.status(201)
-					.location(`${req.originalUrl}/${results.listId}`)
+					.location(`${req.originalUrl}/${results.list_id}`)
 					.json(results);
 			})
 			.catch(error => {
