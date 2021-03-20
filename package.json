@@ -30,7 +30,6 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "morgan": "^1.10.0",
-    "objection": "^2.2.14",
     "pg": "^8.5.1"
   },
   "devDependencies": {
