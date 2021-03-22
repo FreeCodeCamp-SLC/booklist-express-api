@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('readingStatus', table => {
+  return knex.schema.createTable('reading_status', table => {
     table.increments('reading_status_id').unique().notNullable()
     table.string('name', 255).notNullable()
 		table.datetime('created_on').defaultTo(knex.fn.now())
@@ -9,5 +9,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('readingStatus');
+  return knex.schema.dropTable('reading_status');
 };
