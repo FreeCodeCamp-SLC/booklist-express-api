@@ -10,25 +10,19 @@
     "heroku": "node server.js",
     "travis": "npm run mocha"
   },
-  "eslintConfig": {
-    "extends": [
-      "wesbos"
-    ]
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.0.0",
     "knex": "^0.95.1",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33",
     "morgan": "^1.10.0",
     "pg": "^8.5.1"
   },
@@ -36,6 +30,9 @@
     "chai": "^4.3.3",
     "chai-http": "^4.3.0",
     "colors": "^1.4.0",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.3.1",
     "nyc": "^15.1.0"
   },

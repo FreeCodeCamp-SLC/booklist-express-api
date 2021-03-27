@@ -1,9 +1,3 @@
 {
-  "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "wesbos.theme-cobalt2",
-    "formulahendry.auto-rename-tag",
-    "graphql.vscode-graphql",
-    "jpoissonnier.vscode-styled-components"
-  ]
+  "recommendations": ["dbaeumer.vscode-eslint", "formulahendry.auto-rename-tag"]
 }
