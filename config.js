@@ -2,7 +2,7 @@ require('dotenv').config({ path: `${__dirname}/.env` });
 
 module.exports = {
   NODE_ENV: process.env.NODE_ENV || 'development',
-  SERVER_PORT: process.env.SERVER_PORT || 8080,
+  SERVER_PORT: process.env.PORT || 8080,
   CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
 
   DB_CLIENT: process.env.DB_CLIENT || 'pg',
