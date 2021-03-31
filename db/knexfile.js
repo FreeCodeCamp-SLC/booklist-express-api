@@ -53,6 +53,7 @@ module.exports = {
       port: DB_PORT,
       user: DB_USERNAME,
       password: DB_PASSWORD,
+      ssl: { rejectUnauthorized: false },
     },
     pool: {
       min: 2,
@@ -61,7 +62,6 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations',
     },
-    ssl: { rejectUnauthorized: false },
   },
   production: {
     client: DB_CLIENT,
@@ -71,6 +71,7 @@ module.exports = {
       port: DB_PORT,
       user: DB_USERNAME,
       password: DB_PASSWORD,
+      ssl: { rejectUnauthorized: false },
     },
     pool: {
       min: 2,
@@ -79,7 +80,6 @@ module.exports = {
     migrations: {
       directory: `${__dirname}/migrations`,
     },
-    ssl: { rejectUnauthorized: false },
     seeds: {
       directory: `${__dirname}/seeds/production`,
     },
