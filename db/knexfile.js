@@ -61,6 +61,7 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations',
     },
+    ssl: { rejectUnauthorized: false },
   },
   production: {
     client: DB_CLIENT,
@@ -78,6 +79,7 @@ module.exports = {
     migrations: {
       directory: `${__dirname}/migrations`,
     },
+    ssl: { rejectUnauthorized: false },
     seeds: {
       directory: `${__dirname}/seeds/production`,
     },
