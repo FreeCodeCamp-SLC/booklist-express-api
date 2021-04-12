@@ -9,7 +9,7 @@ This is the API for the booklist app, this is built to be the backend for any fr
 1. Clone the project down and run npm install to install node modules.
 1. Setup PostgreSQL on your pc.
 
-   1. Download PostgreSQL from here https://www.postgresql.org/download/, version number shouldn't matter.
+   1. Download PostgreSQL from [here](https://www.postgresql.org/download/), version number shouldn't matter.
    1. Install PostgreSQL with all the default settings, remember the password you chose while installing.
    1. After PostgreSQL is done installing, run pgAdmin, it will ask for the password you set while installing.
    1. Once pgAdmin is running in your browser, expand servers and then PostgreSQL on the left side, right click database and select create > database, you will need a database called 'booklist', go ahead and create another database called 'booklist_test' in case you ever get into writing backend tests.
