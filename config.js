@@ -7,10 +7,10 @@ module.exports = {
 
   DB_CLIENT: process.env.DB_CLIENT || 'pg',
   DB_HOST: process.env.DB_HOST || 'localhost',
-  DB_USERNAME: process.env.DB_USERNAME || 'apuhl',
+  DB_USERNAME: process.env.DB_USERNAME || 'postgres',
   DB_DATABASE: process.env.DB_DATABASE || 'booklist',
   DB_TEST_DATABASE: process.env.DB_TEST_DATABASE || 'booklist_test',
   DB_PASSWORD: process.env.DB_PASSWORD,
   DB_PORT: process.env.DB_PORT || 5432,
-  DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING || 'postgressql://apuhl:Dynasty32$@localhost:5432/booklist',
+  DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING,
 };
