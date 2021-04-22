@@ -8,8 +8,7 @@
     "test": "mocha",
     "cover": "nodemon --exec nyc --reporter=lcov --reporter=text-summary npm run mocha-exit0",
     "heroku": "node index.js",
-    "travis": "npm run mocha",
-    "madeUpCommand": "do stuff"
+    "travis": "npm run mocha"
   },
   "keywords": [],
   "author": "",
