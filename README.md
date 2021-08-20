@@ -6,7 +6,10 @@ This is the API for the booklist app, this is built to be the backend for any fr
 
 ## Installation and Setup
 
-1. Clone the project down and run npm install to install node modules.
+1. Fork the project (repository) first so that you have a copy of the project in your account.
+1. Find the project you just forked in the list of project under your account, and then clone the project down and run npm install to install node modules.
+1. Add a remote repository with this command [git remote add fcc https://github.com/FreeCodeCamp-SLC/booklist-express-api]
+   1. This is to ensure you are still able to pull down the latest changes from the original project. If you're new to using Git/GitHub and pushing/pulling, just ask one of the project leaders or ask during a meetup to go over this.
 1. Setup PostgreSQL on your pc.
 
    1. Download PostgreSQL from [here](https://www.postgresql.org/download/), version number shouldn't matter.
