@@ -41,7 +41,10 @@ exports.getOneBook = async (req, res, next) => {
 // @access Private
 exports.createOneBook = async (req, res, next) => {
   try {
-    validateRequestBody(req, booksTableFields, next);
+    const error = validateRequestBody(req, booksTableFields, next);
+    if (error instanceof Error) {
+      return next(error);
+    }
 
     const userId = req.user.sub;
     const newBook = { user_id: userId };
@@ -76,7 +79,10 @@ exports.createOneBook = async (req, res, next) => {
 // @access Private
 exports.updateBook = (req, res, next) => {
   try {
-    validateRequestBody(req, booksTableFields, next);
+    const error = validateRequestBody(req, booksTableFields, next);
+    if (error instanceof Error) {
+      return next(error);
+    }
 
     const userId = req.user.sub;
     const { bookId } = req.params;
