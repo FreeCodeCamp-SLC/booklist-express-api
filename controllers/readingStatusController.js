@@ -39,7 +39,10 @@ exports.getOneReadingStatus = async (req, res, next) => {
 // @access Private
 exports.createOneReadingStatus = async (req, res, next) => {
   try {
-    validateRequestBody(req, readingStatusTableFields, next);
+    const error = validateRequestBody(req, readingStatusTableFields, next);
+    if (error instanceof Error) {
+      return next(error);
+    }
 
     const newReadingStatus = {};
 
@@ -73,7 +76,10 @@ exports.createOneReadingStatus = async (req, res, next) => {
 // @access Private
 exports.updateReadingStatus = (req, res, next) => {
   try {
-    validateRequestBody(req, readingStatusTableFields, next);
+    const error = validateRequestBody(req, readingStatusTableFields, next);
+    if (error instanceof Error) {
+      return next(error);
+    }
 
     const { readingStatusId } = req.params;
     const toUpdate = {};
