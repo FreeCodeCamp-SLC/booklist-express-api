@@ -6,7 +6,10 @@ This is the API for the booklist app, this is built to be the backend for any fr
 
 ## Installation and Setup
 
-1. Clone the project down and run npm install to install node modules.
+1. Fork the project (repository) first so that you have a copy of the project in your account.
+1. Find the project you just forked in the list of project under your account, and then clone the project down and run npm install to install node modules.
+1. Add a remote repository with this command [git remote add fcc https://github.com/FreeCodeCamp-SLC/booklist-express-api]
+   1. This is to ensure you are still able to pull down the latest changes from the original project. If you're new to using Git/GitHub and pushing/pulling, just ask one of the project leaders or ask during a meetup to go over this.
 1. Setup PostgreSQL on your pc.
 
    1. Download PostgreSQL from [here](https://www.postgresql.org/download/), version number shouldn't matter.
@@ -14,9 +17,12 @@ This is the API for the booklist app, this is built to be the backend for any fr
    1. After PostgreSQL is done installing, run pgAdmin, it will ask for the password you set while installing.
    1. Once pgAdmin is running in your browser, expand servers and then PostgreSQL on the left side, right click database and select create > database, you will need a database called 'booklist', go ahead and create another database called 'booklist_test' in case you ever get into writing backend tests.
 
-1. Create a .env file in the root of this project, we will be putting your local database password env variable here.
+1. Create a .env file in the root of this project, we will be putting your local database password env variable here. There is also 3 other key/value pairs you'll need here, message Alex Puhl on the UtahJS Slack to get this.
 
    1. DB_PASSWORD=yourPassword
+   2. AUTH0_JWKSURI=MESSAGE_ALEX_FOR_VALUE
+   3. AUTH0_AUDIENCE=MESSAGE_ALEX_FOR_VALUE
+   4. AUTH0_ISSUER=MESSAGE_ALEX_FOR_VALUE
 
 1. We will be using Knex to setup the tables and seed some data, we will need to install knex globally if you don't have it already.
    1. You can check what packages are globally installed on your PC with [npm list -g --depth 0]

@@ -13,4 +13,8 @@ module.exports = {
   DB_PASSWORD: process.env.DB_PASSWORD,
   DB_PORT: process.env.DB_PORT || 5432,
   DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING,
+
+  AUTH0_JWKSURI: process.env.AUTH0_JWKSURI,
+  AUTH0_AUDIENCE: process.env.AUTH0_AUDIENCE,
+  AUTH0_ISSUER: process.env.AUTH0_ISSUER,
 };

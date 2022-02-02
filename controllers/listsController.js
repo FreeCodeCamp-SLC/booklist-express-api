@@ -41,7 +41,10 @@ exports.getOneList = async (req, res, next) => {
 // @access Private
 exports.createOneList = async (req, res, next) => {
   try {
-    validateRequestBody(req, listsTableFields, next);
+    const error = validateRequestBody(req, listsTableFields, next);
+    if (error instanceof Error) {
+      return next(error);
+    }
 
     const userId = req.user.sub;
     const newList = { user_id: userId };
@@ -76,7 +79,10 @@ exports.createOneList = async (req, res, next) => {
 // @access Private
 exports.updateList = (req, res, next) => {
   try {
-    validateRequestBody(req, listsTableFields, next);
+    const error = validateRequestBody(req, listsTableFields, next);
+    if (error instanceof Error) {
+      return next(error);
+    }
 
     const userId = req.user.sub;
     const { listId } = req.params;
