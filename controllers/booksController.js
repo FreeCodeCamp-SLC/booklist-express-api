@@ -12,26 +12,29 @@ const updateableBooksFields = gatherTableUpdateableFields(booksTableFields);
 // @desc Get all books
 // @route Get /api/books
 // @access Private
+
 exports.getAllBooks = async (req, res, next) => {
   try {
     // now we are getting the pages past through the front end - done
     // now finish setting up hard coded pagination -done
-    // setup context of pages - next
-    // repeat with sorting
-    console.log('pageItems', req.query.pageItems);
-    console.log('page', req.query.page);
-    let pageItems = 5;
-    let page = 1;
-    if (req.query.pageItems) {
-      pageItems = req.query.pageItems;
+    // setup context of pages - done
+    // find a way to query the total number of books in a new controller?
+
+
+    console.log('itemCount', req.query.itemCount);
+    console.log('page', req.query.pageNumber);
+    let itemCount = 5;
+    let pageNumber = 1;
+    if (req.query.itemCount) {
+      itemCount = req.query.itemCount;
     }
-    if (req.query.page) {
-      page = req.query.page;
+    if (req.query.pageNumber) {
+      pageNumber = req.query.pageNumber;
     }
-    const offset = (page - 1) * pageItems;
+    const offset = (pageNumber - 1) * itemCount;
     const userId = req.user.sub;
 
-    const { rows } = await pg.query(`SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.reading_status_id WHERE user_id = $1 ORDER BY book_id OFFSET ${offset} ROWS FETCH NEXT ${pageItems} ROWS ONLY`, [userId]);
+    const { rows } = await pg.query(`SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.reading_status_id WHERE user_id = $1 ORDER BY book_id OFFSET ${offset} ROWS FETCH NEXT ${itemCount} ROWS ONLY`, [userId]);
     res.status(200).json(rows);
   } catch (error) {
     next(error);
