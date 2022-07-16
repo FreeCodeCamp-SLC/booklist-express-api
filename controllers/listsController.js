@@ -14,10 +14,42 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 // @access Private
 exports.getAllLists = async (req, res, next) => {
   try {
+    let itemCount = 5;
+    let pageNumber = 1;
+    let sortBy = 'name';
+    if (req.query.itemCount) {
+      itemCount = req.query.itemCount;
+    }
+    if (req.query.pageNumber) {
+      pageNumber = req.query.pageNumber;
+    }
+    const offset = (pageNumber - 1) * itemCount;
+    if (req.query.sortBy) {
+      sortBy = req.query.sortBy;
+    }
+    let _sortBy = req.query.sortBy;
+    switch (sortBy) {
+      case 'Title: Ascending':
+        _sortBy = 'NAME ASC';
+        break;
+      case 'Title: Descending':
+        _sortBy = 'NAME DESC';
+        break;
+      case 'Newest':
+        _sortBy = 'BOOK_ID ASC';
+        break;
+      case 'Oldest':
+        _sortBy = 'Book_ID DESC';
+        break;
+
+      default:
+        _sortBy = 'NAME ASC';
+    }
+
     const userId = req.user.sub;
     const allRows = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
-    let { rows } = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
-    rows = [rows, { totalListsCout: allRows.rows.length }];
+    let { rows } = await pg.query(`SELECT * FROM lists WHERE user_id = $1 ORDER BY ${_sortBy} OFFSET ${offset} ROWS FETCH NEXT ${itemCount} ROWS ONLY`, [userId]);
+    rows = [rows, { totalListCount: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {
     next(error);
