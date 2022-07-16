@@ -15,7 +15,9 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 exports.getAllLists = async (req, res, next) => {
   try {
     const userId = req.user.sub;
-    const { rows } = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
+    const allRows = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
+    let { rows } = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
+    rows = [rows, { totalListsCout: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {
     next(error);

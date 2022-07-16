@@ -17,7 +17,7 @@ exports.getAllBooks = async (req, res, next) => {
   try {
     let itemCount = 10;
     let pageNumber = 1;
-    let sortBy = 'title'
+    let sortBy = 'title';
     if (req.query.itemCount) {
       itemCount = req.query.itemCount;
     }
@@ -25,35 +25,35 @@ exports.getAllBooks = async (req, res, next) => {
       pageNumber = req.query.pageNumber;
     }
     const offset = (pageNumber - 1) * itemCount;
-if (req.query.sortBy){
-  sortBy = req.query.sortBy
-}
-    let _sortBy = req.query.sortBy
-    switch(sortBy){
+    if (req.query.sortBy) {
+      sortBy = req.query.sortBy;
+    }
+    let _sortBy = req.query.sortBy;
+    switch (sortBy) {
       case 'Title: Ascending':
         _sortBy = 'TITLE ASC';
         break;
       case 'Title: Descending':
-        _sortBy =  'TITLE DESC'
+        _sortBy = 'TITLE DESC';
         break;
-        case 'Newest':
-        _sortBy = 'BOOK_ID ASC'
+      case 'Newest':
+        _sortBy = 'BOOK_ID ASC';
         break;
-        case 'Oldest':
-          _sortBy = 'Book_ID DESC'
-          break;
+      case 'Oldest':
+        _sortBy = 'Book_ID DESC';
+        break;
 
-        default:
-          _sortBy = 'TITLE ASC'
+      default:
+        _sortBy = 'TITLE ASC';
     }
 
     const userId = req.user.sub;
 
-    const  allRows  = await pg.query('SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.reading_status_id WHERE user_id = $1', [userId]);
-// console.log('all Rows', allRows.rows.length)
+    const allRows = await pg.query('SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.reading_status_id WHERE user_id = $1', [userId]);
+    // console.log('all Rows', allRows.rows.length)
     let { rows } = await pg.query(`SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.
     reading_status_id WHERE user_id = $1 ORDER BY ${_sortBy} OFFSET ${offset} ROWS FETCH NEXT ${itemCount} ROWS ONLY`, [userId]);
-    rows = [rows, {totalBookCount: allRows.rows.length}]
+    rows = [rows, { totalBookCount: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {
     next(error);
