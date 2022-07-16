@@ -36,10 +36,16 @@ exports.getAllLists = async (req, res, next) => {
         _sortBy = 'NAME DESC';
         break;
       case 'Newest':
-        _sortBy = 'BOOK_ID ASC';
+        _sortBy = 'LIST_ID ASC';
         break;
       case 'Oldest':
-        _sortBy = 'Book_ID DESC';
+        _sortBy = 'LIST_ID DESC';
+        break;
+      case 'Year: Ascending':
+        _sortBy = 'YEAR ASC';
+        break;
+      case 'Year: Descending':
+        _sortBy = 'YEAR DESC';
         break;
 
       default:
