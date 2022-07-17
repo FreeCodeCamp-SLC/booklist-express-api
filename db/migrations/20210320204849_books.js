@@ -7,7 +7,8 @@ exports.up = function (knex) {
     table.string('title', 255).notNullable();
     table.string('image_url');
     table.integer('pages');
-    table.integer('reading_status_id').references('reading_status_id').inTable('reading_status');
+    table.boolean('favorite').defaultTo(false);
+    table.integer('reading_status_id').references('reading_status_id').inTable('reading_status').defaultTo(1);
     table.datetime('date_started');
     table.datetime('date_finished');
     table.datetime('created_on').defaultTo(knex.fn.now());
