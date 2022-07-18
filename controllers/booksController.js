@@ -17,7 +17,6 @@ exports.getAllBooks = async (req, res, next) => {
   try {
     const userId = req.user.sub;
     const { allBooks } = req.query;
-
     if (allBooks) {
       try {
         const { rows } = await pg.query('SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.reading_status_id WHERE user_id = $1', [userId]);
@@ -27,16 +26,16 @@ exports.getAllBooks = async (req, res, next) => {
       }
       return;
     }
-    itemCount = 10;
+    let booksItemCount = 10;
     let pageNumber = 1;
     let sortBy = 'title';
-    if (req.query.itemCount) {
-      itemCount = req.query.itemCount;
+    if (req.query.booksItemCount) {
+      booksItemCount = req.query.booksItemCount;
     }
     if (req.query.pageNumber) {
       pageNumber = req.query.pageNumber;
     }
-    const offset = (pageNumber - 1) * itemCount;
+    const offset = (pageNumber - 1) * booksItemCount;
     if (req.query.sortBy) {
       sortBy = req.query.sortBy;
     }
@@ -60,9 +59,8 @@ exports.getAllBooks = async (req, res, next) => {
     }
 
     const allRows = await pg.query('SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.reading_status_id WHERE user_id = $1', [userId]);
-    // console.log('all Rows', allRows.rows.length)
     let { rows } = await pg.query(`SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.
-    reading_status_id WHERE user_id = $1 ORDER BY ${_sortBy}  OFFSET ${offset} ROWS FETCH NEXT ${itemCount} ROWS ONLY`, [userId]);
+    reading_status_id WHERE user_id = $1 ORDER BY ${_sortBy}  OFFSET ${offset} ROWS FETCH NEXT ${booksItemCount} ROWS ONLY`, [userId]);
     rows = [rows, { totalBookCount: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {

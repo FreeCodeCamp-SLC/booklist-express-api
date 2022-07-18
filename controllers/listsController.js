@@ -13,17 +13,19 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 // @route Get /api/lists
 // @access Private
 exports.getAllLists = async (req, res, next) => {
+// need to make a all lists controller because we need every list for the add a book dropdown.
+
   try {
-    let itemCount = 5;
+    let listsItemCount = 5;
     let pageNumber = 1;
     let sortBy = 'name';
-    if (req.query.itemCount) {
-      itemCount = req.query.itemCount;
+    if (req.query.listsItemCount) {
+      listsItemCount = req.query.listsItemCount;
     }
     if (req.query.pageNumber) {
       pageNumber = req.query.pageNumber;
     }
-    const offset = (pageNumber - 1) * itemCount;
+    const offset = (pageNumber - 1) * listsItemCount;
     if (req.query.sortBy) {
       sortBy = req.query.sortBy;
     }
@@ -54,7 +56,7 @@ exports.getAllLists = async (req, res, next) => {
 
     const userId = req.user.sub;
     const allRows = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
-    let { rows } = await pg.query(`SELECT * FROM lists WHERE user_id = $1 ORDER BY ${_sortBy} OFFSET ${offset} ROWS FETCH NEXT ${itemCount} ROWS ONLY`, [userId]);
+    let { rows } = await pg.query(`SELECT * FROM lists WHERE user_id = $1 ORDER BY ${_sortBy} OFFSET ${offset} ROWS FETCH NEXT ${listsItemCount} ROWS ONLY`, [userId]);
     rows = [rows, { totalListCount: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {
