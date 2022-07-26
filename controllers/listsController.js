@@ -14,37 +14,37 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 // @access Private
 exports.getAllLists = async (req, res, next) => {
   try {
-    let itemCount = 5;
+    let listsItemCount = 5;
     let pageNumber = 1;
     let sortBy = 'name';
-    if (req.query.itemCount) {
-      itemCount = req.query.itemCount;
+    if (req.query.listsItemCount) {
+      listsItemCount = req.query.listsItemCount;
     }
     if (req.query.pageNumber) {
       pageNumber = req.query.pageNumber;
     }
-    const offset = (pageNumber - 1) * itemCount;
+    const offset = (pageNumber - 1) * listsItemCount;
     if (req.query.sortBy) {
       sortBy = req.query.sortBy;
     }
     let _sortBy = req.query.sortBy;
     switch (sortBy) {
-      case 'Title: Ascending':
+      case 'Name: Asc':
         _sortBy = 'NAME ASC';
         break;
-      case 'Title: Descending':
+      case 'Name: Desc':
         _sortBy = 'NAME DESC';
         break;
-      case 'Newest':
+      case 'Most Recent: Asc':
         _sortBy = 'LIST_ID ASC';
         break;
-      case 'Oldest':
+      case 'Most Recent: Desc':
         _sortBy = 'LIST_ID DESC';
         break;
-      case 'Year: Ascending':
+      case 'Year: Asc':
         _sortBy = 'YEAR ASC';
         break;
-      case 'Year: Descending':
+      case 'Year: Desc':
         _sortBy = 'YEAR DESC';
         break;
 
@@ -54,7 +54,7 @@ exports.getAllLists = async (req, res, next) => {
 
     const userId = req.user.sub;
     const allRows = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
-    let { rows } = await pg.query(`SELECT * FROM lists WHERE user_id = $1 ORDER BY ${_sortBy} OFFSET ${offset} ROWS FETCH NEXT ${itemCount} ROWS ONLY`, [userId]);
+    let { rows } = await pg.query(`SELECT * FROM lists WHERE user_id = $1 ORDER BY ${_sortBy} OFFSET ${offset} ROWS FETCH NEXT ${listsItemCount} ROWS ONLY`, [userId]);
     rows = [rows, { totalListCount: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {
