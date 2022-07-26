@@ -13,8 +13,6 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 // @route Get /api/lists
 // @access Private
 exports.getAllLists = async (req, res, next) => {
-// need to make a all lists controller because we need every list for the add a book dropdown.
-
   try {
     let listsItemCount = 5;
     let pageNumber = 1;
@@ -31,22 +29,22 @@ exports.getAllLists = async (req, res, next) => {
     }
     let _sortBy = req.query.sortBy;
     switch (sortBy) {
-      case 'Title: Ascending':
+      case 'Name: Asc':
         _sortBy = 'NAME ASC';
         break;
-      case 'Title: Descending':
+      case 'Name: Desc':
         _sortBy = 'NAME DESC';
         break;
-      case 'Newest':
+      case 'Most Recent: Asc':
         _sortBy = 'LIST_ID ASC';
         break;
-      case 'Oldest':
+      case 'Most Recent: Desc':
         _sortBy = 'LIST_ID DESC';
         break;
-      case 'Year: Ascending':
+      case 'Year: Asc':
         _sortBy = 'YEAR ASC';
         break;
-      case 'Year: Descending':
+      case 'Year: Desc':
         _sortBy = 'YEAR DESC';
         break;
 
