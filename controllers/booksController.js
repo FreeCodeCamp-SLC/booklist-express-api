@@ -28,7 +28,7 @@ exports.getAllBooks = async (req, res, next) => {
     }
     let booksItemCount = 10;
     let pageNumber = 1;
-    let sortBy = 'title';
+    let sortBy = 'TITLE';
     if (req.query.booksItemCount) {
       booksItemCount = req.query.booksItemCount;
     }
@@ -41,16 +41,16 @@ exports.getAllBooks = async (req, res, next) => {
     }
     let _sortBy = req.query.sortBy;
     switch (sortBy) {
-      case 'Title: Ascending':
+      case 'Name: Asc':
         _sortBy = 'TITLE ASC';
         break;
-      case 'Title: Descending':
+      case 'Name: Desc':
         _sortBy = 'TITLE DESC';
         break;
-      case 'Newest':
+      case 'Most Recent: Asc':
         _sortBy = 'BOOK_ID ASC';
         break;
-      case 'Oldest':
+      case 'Most Recent: Desc':
         _sortBy = 'Book_ID DESC';
         break;
 
