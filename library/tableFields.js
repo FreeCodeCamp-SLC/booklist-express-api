@@ -80,6 +80,12 @@ const booksTableFields = {
     dataType: 'NUMBER',
     fieldSize: 'null',
   },
+  favorite: {
+    required: false,
+    updateable: true,
+    dataType: 'BOOLEAN',
+    fieldSize: 'null',
+  },
   reading_status_id: {
     required: false,
     updateable: true,
