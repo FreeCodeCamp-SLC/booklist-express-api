@@ -3,6 +3,7 @@ const booksController = require('./booksController');
 const readingStatusController = require('./readingStatusController');
 const booksByListController = require('./booksByListController');
 const allListsController = require('./allListsController');
+const searchBooksContoller = require('./searchBooksController');
 
 module.exports = {
   listsController,
@@ -10,4 +11,5 @@ module.exports = {
   readingStatusController,
   booksByListController,
   allListsController,
+  searchBooksContoller,
 };
