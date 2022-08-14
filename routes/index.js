@@ -9,5 +9,6 @@ router.use('/api/books', checkJwt, require('./booksRoute'));
 router.use('/api/booksByList', checkJwt, require('./booksByListRoute'));
 router.use('/api/reading_status', checkJwt, require('./readingStatusRoute'));
 router.use('/api/allLists', checkJwt, require('./allListsRoute'));
+router.use('/api/favorites', checkJwt, require('./favoritesRoute'));
 
 module.exports = router;
