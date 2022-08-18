@@ -1,6 +1,6 @@
 const pg = require('../db/pg');
 
-exports.getSearchBooks = async (req, res, next) => {
+exports.getSearchFavorites = async (req, res, next) => {
   try {
     const userId = req.user.sub;
     let sortBy = 'TITLE';
@@ -27,7 +27,7 @@ exports.getSearchBooks = async (req, res, next) => {
         _sortBy = 'TITLE ASC';
     }
 
-    const { rows } = await pg.query(`SELECT * FROM BOOKS WHERE USER_ID = $1 AND lower(TITLE) LIKE lower('%${req.query.bookQuery}%') ORDER BY ${_sortBy}`, [userId]);
+    const { rows } = await pg.query(`SELECT * FROM BOOKS WHERE USER_ID = $1 AND lower(TITLE) LIKE lower('%${req.query.bookQuery}%') AND favorite = true ORDER BY ${_sortBy}`, [userId]);
 
     res.status(200).json(rows);
   } catch (error) {

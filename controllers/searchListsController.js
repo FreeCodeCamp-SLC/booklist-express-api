@@ -33,10 +33,7 @@ exports.getSearchLists = async (req, res, next) => {
         _sortBy = 'NAME ASC';
     }
 
-    const allRows = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
-
-    let { rows } = await pg.query(`SELECT * FROM lists WHERE USER_ID = $1 AND lower(NAME) LIKE lower('%${req.query.listQuery}%') ORDER BY ${_sortBy}`, [userId]);
-    rows = [rows, { totalListCount: allRows.rows.length }];
+    const { rows } = await pg.query(`SELECT * FROM lists WHERE USER_ID = $1 AND lower(NAME) LIKE lower('%${req.query.listQuery}%') ORDER BY ${_sortBy}`, [userId]);
 
     res.status(200).json(rows);
   } catch (error) {
