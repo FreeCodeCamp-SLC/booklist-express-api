@@ -5,6 +5,7 @@ const booksByListController = require('./booksByListController');
 const allListsController = require('./allListsController');
 const searchBooksContoller = require('./searchBooksController');
 const searchListsController = require('./searchListsController');
+const favoritesController = require('./favoritesController');
 
 module.exports = {
   listsController,
@@ -14,4 +15,5 @@ module.exports = {
   allListsController,
   searchBooksContoller,
   searchListsController,
+  favoritesController,
 };
