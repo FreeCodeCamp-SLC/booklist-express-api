@@ -1,7 +1,6 @@
 const pg = require('../db/pg');
 
 exports.getSearchBooks = async (req, res, next) => {
-  console.log('req.query.bookQuery', req.query.bookQuery);
   try {
     const userId = req.user.sub;
     let sortBy = 'TITLE';
@@ -27,10 +26,6 @@ exports.getSearchBooks = async (req, res, next) => {
       default:
         _sortBy = 'TITLE ASC';
     }
-    // idea: implement sorting
-    // then on front end have toggle for 2nd booklist with search results that gets toggled after 3rd character is entered
-    // untoggle back to normal booklist after dashboard is clicked or navigated to
-    // do for lists and favorites too.
 
     const allRows = await pg.query('SELECT * FROM books WHERE user_id = $1', [userId]);
 
