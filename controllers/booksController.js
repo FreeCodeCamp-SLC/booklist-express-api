@@ -1,5 +1,6 @@
 const pg = require('../db/pg');
 const knex = require('../db/knex');
+const { sort } = require('../utilities/sort');
 
 const { booksTableFields } = require('../library/tableFields');
 const {
@@ -28,7 +29,6 @@ exports.getAllBooks = async (req, res, next) => {
     }
     let booksItemCount = 10;
     let pageNumber = 1;
-    let sortBy = 'TITLE';
     if (req.query.booksItemCount) {
       booksItemCount = req.query.booksItemCount;
     }
@@ -36,31 +36,11 @@ exports.getAllBooks = async (req, res, next) => {
       pageNumber = req.query.pageNumber;
     }
     const offset = (pageNumber - 1) * booksItemCount;
-    if (req.query.sortBy) {
-      sortBy = req.query.sortBy;
-    }
-    let _sortBy = req.query.sortBy;
-    switch (sortBy) {
-      case 'Name: Asc':
-        _sortBy = 'TITLE ASC';
-        break;
-      case 'Name: Desc':
-        _sortBy = 'TITLE DESC';
-        break;
-      case 'Most Recent: Asc':
-        _sortBy = 'BOOK_ID ASC';
-        break;
-      case 'Most Recent: Desc':
-        _sortBy = 'Book_ID DESC';
-        break;
-
-      default:
-        _sortBy = 'TITLE ASC';
-    }
+    const sortBy = sort(req.query.sortBy);
 
     const allRows = await pg.query('SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.reading_status_id WHERE user_id = $1', [userId]);
     let { rows } = await pg.query(`SELECT * FROM books LEFT JOIN reading_status ON reading_status.reading_status_id = books.
-    reading_status_id WHERE user_id = $1 ORDER BY ${_sortBy}  OFFSET ${offset} ROWS FETCH NEXT ${booksItemCount} ROWS ONLY`, [userId]);
+    reading_status_id WHERE user_id = $1 ORDER BY ${sortBy}  OFFSET ${offset} ROWS FETCH NEXT ${booksItemCount} ROWS ONLY`, [userId]);
     rows = [rows, { totalBookCount: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {
