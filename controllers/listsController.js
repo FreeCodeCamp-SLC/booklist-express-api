@@ -1,5 +1,6 @@
 const pg = require('../db/pg');
 const knex = require('../db/knex');
+const { sort } = require('../utilities/sort');
 
 const { listsTableFields } = require('../library/tableFields');
 const {
@@ -16,7 +17,6 @@ exports.getAllLists = async (req, res, next) => {
   try {
     let listsItemCount = 5;
     let pageNumber = 1;
-    let sortBy = 'name';
     if (req.query.listsItemCount) {
       listsItemCount = req.query.listsItemCount;
     }
@@ -24,37 +24,11 @@ exports.getAllLists = async (req, res, next) => {
       pageNumber = req.query.pageNumber;
     }
     const offset = (pageNumber - 1) * listsItemCount;
-    if (req.query.sortBy) {
-      sortBy = req.query.sortBy;
-    }
-    let _sortBy = req.query.sortBy;
-    switch (sortBy) {
-      case 'Name: Asc':
-        _sortBy = 'NAME ASC';
-        break;
-      case 'Name: Desc':
-        _sortBy = 'NAME DESC';
-        break;
-      case 'Most Recent: Asc':
-        _sortBy = 'LIST_ID ASC';
-        break;
-      case 'Most Recent: Desc':
-        _sortBy = 'LIST_ID DESC';
-        break;
-      case 'Year: Asc':
-        _sortBy = 'YEAR ASC';
-        break;
-      case 'Year: Desc':
-        _sortBy = 'YEAR DESC';
-        break;
-
-      default:
-        _sortBy = 'NAME ASC';
-    }
+    const sortBy = sort(req.query.sortBy, true);
 
     const userId = req.user.sub;
     const allRows = await pg.query('SELECT * FROM lists WHERE user_id = $1', [userId]);
-    let { rows } = await pg.query(`SELECT * FROM lists WHERE user_id = $1 ORDER BY ${_sortBy} OFFSET ${offset} ROWS FETCH NEXT ${listsItemCount} ROWS ONLY`, [userId]);
+    let { rows } = await pg.query(`SELECT * FROM lists WHERE user_id = $1 ORDER BY ${sortBy} OFFSET ${offset} ROWS FETCH NEXT ${listsItemCount} ROWS ONLY`, [userId]);
     rows = [rows, { totalListCount: allRows.rows.length }];
     res.status(200).json(rows);
   } catch (error) {
