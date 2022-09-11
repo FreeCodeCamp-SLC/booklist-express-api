@@ -116,6 +116,18 @@ const booksTableFields = {
     dataType: 'DATETIME',
     fieldSize: 'null',
   },
+  rating: {
+    required: false,
+    updateable: true,
+    dataType: 'NUMBER',
+    fieldSize: 1,
+  },
+  bookmark_page: {
+    required: false,
+    updateable: true,
+    dataType: 'NUMBER',
+    fieldSize: 'null',
+  },
 };
 
 const readingStatusTableFields = {
