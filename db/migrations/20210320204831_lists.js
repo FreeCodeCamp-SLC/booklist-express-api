@@ -3,7 +3,7 @@ exports.up = function (knex) {
     table.increments('list_id').unique().notNullable();
     table.string('user_id', 255).notNullable();
     table.string('name', 255).notNullable();
-    table.integer('year');
+    table.integer('year').checkPositive();
     table.dateTime('created_on').defaultTo(knex.fn.now());
     table.dateTime('modified_on').defaultTo(knex.fn.now());
   });
