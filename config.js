@@ -17,4 +17,7 @@ module.exports = {
   AUTH0_JWKSURI: process.env.AUTH0_JWKSURI,
   AUTH0_AUDIENCE: process.env.AUTH0_AUDIENCE,
   AUTH0_ISSUER: process.env.AUTH0_ISSUER,
+  CLOUD_NAME: process.env.CLOUD_NAME,
+  CLOUD_API_KEY: process.env.CLOUD_API_KEY,
+  CLOUD_API_SECRET: process.env.CLOUD_API_SECRET,
 };
