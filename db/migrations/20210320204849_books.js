@@ -1,6 +1,5 @@
 exports.up = function (knex) {
   return knex.schema.createTable('books', (table) => {
-    console.log('table', table.integer);
     table.increments('book_id').unique().notNullable();
     table.string('user_id').notNullable();
     table.integer('list_id').notNullable().references('list_id').inTable('lists');
@@ -16,6 +15,8 @@ exports.up = function (knex) {
     table.datetime('modified_on').defaultTo(knex.fn.now());
     table.integer('bookmark_page').checkPositive();
     table.integer('rating', 1).checkBetween([1, 5]);
+    table.string('google_link', 255);
+    table.string('description', 2000);
   });
 };
 
