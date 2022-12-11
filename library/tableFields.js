@@ -128,6 +128,18 @@ const booksTableFields = {
     dataType: 'NUMBER',
     fieldSize: 'null',
   },
+  google_link: {
+    required: false,
+    updateable: true,
+    dataType: 'STRING',
+    fieldSize: { MIN: 1, MAX: 255 },
+  },
+  description: {
+    required: false,
+    updateable: true,
+    dataType: 'STRING',
+    fieldSize: { MIN: 1, MAX: 2000 },
+  },
 };
 
 const readingStatusTableFields = {
