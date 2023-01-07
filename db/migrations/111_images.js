@@ -1,10 +1,8 @@
 exports.up = function (knex) {
   return knex.schema
     .createTable('images', (table) => {
-      table.increments('id').unique().notNullable();
-      table.string('title', 128).notNullable();
-      table.string('cloudinary_id').notNullable();
-      table.string('image_url', 128).notNullable();
+      table.string('user_id', 255).notNullable();
+      table.string('image_url', 2048).notNullable();
     });
 };
 

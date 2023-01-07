@@ -5,11 +5,10 @@ const router = express.Router();
 const { imagesController } = require('../controllers');
 
 router.route('/')
-  .get(imagesController.persistImage);
+  .get(imagesController.getProfilePicture)
+  .post(imagesController.postProfilePicture);
 
-// router.route('/persist-image/:id')
-//   .get(imagesController.getOneBook)
-//   .put(imagesController.updateBook)
-//   .delete(imagesController.deleteBook);
+router.route('/generateSignature')
+  .get(imagesController.generateSignature);
 
 module.exports = router;
