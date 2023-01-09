@@ -7,7 +7,7 @@ const searchBooksContoller = require('./searchBooksController');
 const searchListsController = require('./searchListsController');
 const favoritesController = require('./favoritesController');
 const searchFavoritesController = require('./searchFavoritesController');
-const imagesController = require('./imagesController');
+const profileController = require('./profileController');
 
 module.exports = {
   listsController,
@@ -19,5 +19,5 @@ module.exports = {
   searchListsController,
   favoritesController,
   searchFavoritesController,
-  imagesController,
+  profileController,
 };
