@@ -169,8 +169,36 @@ const readingStatusTableFields = {
   },
 };
 
+const profilesTableFields = {
+  user_id: {
+    required: false,
+    updateable: false,
+    dataType: 'STRING',
+    fieldSize: { MIN: 1, MAX: 255 },
+  },
+  user_name: {
+    required: false,
+    updateable: true,
+    dataType: 'STRING',
+    fieldSize: { MIN: 1, MAX: 40 },
+  },
+  about: {
+    required: false,
+    updateable: true,
+    dataType: 'STRING',
+    fieldSize: { MIN: 0, MAX: 2000 },
+  },
+  image_url: {
+    required: false,
+    updateable: true,
+    dataType: 'STRING',
+    fieldSize: { MIN: 1, MAX: 2048 },
+  },
+};
+
 module.exports = {
   listsTableFields,
   booksTableFields,
   readingStatusTableFields,
+  profilesTableFields,
 };
