@@ -132,13 +132,13 @@ const booksTableFields = {
     required: false,
     updateable: true,
     dataType: 'STRING',
-    fieldSize: { MIN: 1, MAX: 255 },
+    fieldSize: { MIN: 0, MAX: 255 },
   },
   description: {
     required: false,
     updateable: true,
     dataType: 'STRING',
-    fieldSize: { MIN: 1, MAX: 5000 },
+    fieldSize: { MIN: 0, MAX: 5000 },
   },
 };
 
