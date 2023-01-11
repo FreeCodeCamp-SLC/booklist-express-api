@@ -16,7 +16,7 @@ exports.up = function (knex) {
     table.integer('bookmark_page').checkPositive();
     table.integer('rating', 1).checkBetween([1, 5]);
     table.string('google_link', 255);
-    table.string('description', 2500);
+    table.string('description', 5000);
   });
 };
 
