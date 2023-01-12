@@ -1,20 +1,45 @@
 {
-  "name": "booklist-scratch-api",
+  "name": "booklist-express-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon server.js",
+    "test": "mocha",
+    "cover": "nodemon --exec nyc --reporter=lcov --reporter=text-summary npm run mocha-exit0",
+    "heroku": "node index.js",
+    "travis": "npm run mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "cloudinary": "^1.32.0",
+    "cors": "^2.8.5",
+    "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "knex": "^0.95.1",
-    "objection": "^2.2.14",
+    "express-jwt": "^6.0.0",
+    "express-jwt-authz": "^2.4.1",
+    "jwks-rsa": "^2.0.0",
+    "knex": "^2.3.0",
+    "morgan": "^1.10.0",
     "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.3",
+    "chai-http": "^4.3.0",
+    "colors": "^1.4.0",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.3.1",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FreeCodeCamp-SLC/booklist-express-api"
   }
 }
