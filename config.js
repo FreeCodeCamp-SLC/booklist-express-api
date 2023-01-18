@@ -11,7 +11,7 @@ module.exports = {
   DB_DATABASE: process.env.DB_DATABASE || 'booklist',
   DB_TEST_DATABASE: process.env.DB_TEST_DATABASE || 'booklist_test',
   DB_PASSWORD: process.env.DB_PASSWORD,
-  DB_PORT: process.env.PORT || 5432,
+  DB_PORT: process.env.DB_PORT || 5432,
   DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING,
   PROD_DB_PASSWORD: process.env.PROD_DB_PASSWORD,
 
