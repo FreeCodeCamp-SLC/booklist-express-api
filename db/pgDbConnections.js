@@ -1,5 +1,5 @@
 const {
-  DB_HOST, DB_USERNAME, DB_DATABASE, DB_TEST_DATABASE, DB_PASSWORD, DB_PORT,
+  DB_HOST, DB_USERNAME, DB_DATABASE, DB_TEST_DATABASE, DB_PASSWORD, DB_PORT, PROD_DB_PASSWORD,
 } = require('../config');
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
       database: DB_DATABASE,
       port: DB_PORT,
       user: DB_USERNAME,
-      password: DB_PASSWORD,
+      password: PROD_DB_PASSWORD,
     },
   },
 };
