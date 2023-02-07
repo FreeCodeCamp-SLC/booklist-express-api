@@ -70,18 +70,10 @@ module.exports = {
     },
   },
   production: {
-    client: DB_CLIENT,
+    client: 'pg',
     connection: {
-      host: DB_HOST,
-      database: DB_DATABASE,
-      port: DB_PORT,
-      user: DB_USERNAME,
-      password: PROD_DB_PASSWORD,
+      connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
-    },
-    pool: {
-      min: 2,
-      max: 10,
     },
     migrations: {
       directory: `${__dirname}/migrations`,
