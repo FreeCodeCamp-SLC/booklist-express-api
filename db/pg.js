@@ -1,8 +1,8 @@
 const { Pool } = require('pg');
 
-const environment = process.env.NODE_ENV || 'development';
+// const environment = process.env.NODE_ENV || 'development';
 
-const { connection } = require('./pgDbConnections')[environment];
+const { connection } = require('./pgDbConnections').production;
 
 const pool = new Pool(connection);
 
