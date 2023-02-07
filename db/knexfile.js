@@ -1,5 +1,12 @@
 const {
-  DB_CLIENT, DB_HOST, DB_USERNAME, DB_DATABASE, DB_TEST_DATABASE, DB_PASSWORD, DB_PORT,
+  DB_CLIENT,
+  DB_HOST,
+  DB_USERNAME,
+  DB_DATABASE,
+  DB_TEST_DATABASE,
+  DB_PASSWORD,
+  DB_PORT,
+  PROD_DB_PASSWORD,
 } = require('../config');
 
 module.exports = {
@@ -19,14 +26,10 @@ module.exports = {
       directory: `${__dirname}/seeds/test`,
     },
     log: {
-      warn(message) {
-      },
-      error(message) {
-      },
-      deprecate(message) {
-      },
-      debug(message) {
-      },
+      warn(message) {},
+      error(message) {},
+      deprecate(message) {},
+      debug(message) {},
     },
   },
   development: {
