@@ -17,11 +17,11 @@ app.use(
   ),
 );
 
-app.use(
-  cors({
-    origin: false,
-  }),
-);
+// app.use(
+//   cors({
+//     origin: false,
+//   }),
+// );
 
 app.use(express.json());
 
