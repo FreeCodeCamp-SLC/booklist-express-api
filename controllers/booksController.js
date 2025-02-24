@@ -15,7 +15,7 @@ const updateableBooksFields = gatherTableUpdateableFields(booksTableFields);
 // @access Private
 
 exports.getAllBooks = async (req, res, next) => {
-  try {
+	try {
     const userId = req.user.sub;
     const { allBooks } = req.query;
     if (allBooks) {

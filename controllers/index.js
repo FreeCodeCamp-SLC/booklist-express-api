@@ -1,3 +1,4 @@
+const helloController = require('./helloController')
 const listsController = require('./listsController');
 const booksController = require('./booksController');
 const readingStatusController = require('./readingStatusController');
@@ -10,6 +11,7 @@ const searchFavoritesController = require('./searchFavoritesController');
 const profileController = require('./profileController');
 
 module.exports = {
+	helloController,
   listsController,
   booksController,
   readingStatusController,

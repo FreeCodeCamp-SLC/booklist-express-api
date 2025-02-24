@@ -7,14 +7,14 @@ const { parse } = require('pg-connection-string');
 
 const pgconfig = parse(process.env.DATABASE_URL);
 
-pgconfig.ssl = { rejectUnauthorized: false };
+// pgconfig.ssl = { rejectUnauthorized: false };
 
-const pool = new Pool({
-  client: 'pg',
-  connection: pgconfig,
-});
+const pool = new Pool(pgconfig)
 
-console.log('pool', pool);
+// const pool = new Pool({
+//   client: 'pg',
+//   connection: pgconfig,
+// });
 
 // const pool = new Pool({
 //   connectionString: process.env.DATABASE_URL,

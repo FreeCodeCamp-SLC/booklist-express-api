@@ -13,7 +13,10 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 // @desc Get all lists
 // @route Get /api/lists
 // @access Private
-exports.getAllLists = async (req, res, next) => {
+exports.getAllLists = async (req, res, next) => {	
+	if(!req.user) {
+		return res.status(403).json({ message: "No user provided"})
+	}
   try {
     let listsItemCount = 5;
     let pageNumber = 1;
