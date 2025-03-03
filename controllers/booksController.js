@@ -111,7 +111,7 @@ exports.updateBook = (req, res, next) => {
     }
 
     const userId = req.user.sub;
-    const { bookId } = req.params;
+    const { bookId } = req.params;		
     const toUpdate = {};
 
     updateableBooksFields.forEach((field) => {
@@ -133,7 +133,7 @@ exports.updateBook = (req, res, next) => {
         const result = results[0];
         res
           .status(200)
-          .location(`${req.originalUrl}/${result.book_id}`)
+          .location(`${req.originalUrl}/${bookId}`)
           .json(result);
       })
       .catch((error) => {
