@@ -3,6 +3,9 @@ const morgan = require('morgan');
 const { format } = require('date-fns');
 const cors = require('cors');
 const authenticateJWT = require("./utilities/authenticateJWT");
+const swaggerUi = require("swagger-ui-express")
+const swaggerConfig = require("./swaggerConfig")
+const checkJwt = require("./utilities/auth0");
 
 const routes = require('./routes');
 
@@ -37,6 +40,8 @@ app.use(express.json());
 app.use(authenticateJWT)
 
 app.use(routes);
+
+app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerConfig))
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

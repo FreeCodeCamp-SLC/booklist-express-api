@@ -21,6 +21,9 @@ const getKey = (header, callback) => {
 };
 
 const authenticateJWT = (req, res, next) => {
+	if (req.originalUrl.startsWith('/api/api-docs')) {		
+		return next()
+	}
   const token = req.headers["authorization"]?.split(" ")[1];
 
 	console.log("toekN", token)

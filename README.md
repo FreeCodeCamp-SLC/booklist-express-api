@@ -45,3 +45,8 @@ Postman is a useful tool for API development, we can use it to test sending REST
 2. You can create a postman account if you want. This will allow you to then install postman on another pc and when you login all your saved network requests will download to that pc.
 3. We have a file in the root of this project called Booklists.postman_collection.json, we will want to import this into postman by clicking on File > Import from within Postman. Find the file Booklists.postman_collection.json from inside this project.
 4. You should now have all the api requests inside a folder called Booklists with the subfolders List Route, Book Route, Reading Status Route.
+5. If testing an endpoint in POSTMAN, make sure the Bearer token is current. You can get this by signing into the app, then checking the local storage for the authToken, then using that in POSTMAN. Click on an endpoint, Authorization > Auth Type = Bearer Token. Paste that token into the value field.
+
+## Documentation
+
+We're using Swagger to document the endpoints. Go to localhost:\<port>/api/api-docs to view the documentation.

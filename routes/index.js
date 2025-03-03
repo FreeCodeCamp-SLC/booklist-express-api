@@ -1,8 +1,12 @@
 const express = require('express');
+const swaggerUi = require("swagger-ui-express")
+const swaggerConfig = require("../swaggerConfig")
 
 const router = express.Router();
 
 const checkJwt = require('../utilities/auth0');
+
+// router.use('/api/api-docs', swaggerUi.server, swaggerUi.setup(swaggerConfig))
 
 router.use("/api/hello", require("./helloRoute"))
 router.use('/api/lists', 
