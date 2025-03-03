@@ -120,8 +120,8 @@ exports.updateList = (req, res, next) => {
         list_id: listId,
       })
       .update(toUpdate)
-      .then((results) => {
-        const result = results[0];
+      .then((results) => {				
+        const result = results[0];				
         res
           .status(200)
           .location(`${req.originalUrl}/${result.list_id}`)
