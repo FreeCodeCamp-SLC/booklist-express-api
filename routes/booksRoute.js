@@ -178,7 +178,7 @@ const { booksController } = require('../controllers');
  *                   pages:
  *                     type: number
  *                   favorite:
- *                     type: favorite
+ *                     type: boolean
  *                   reading_status_id:
  *                     type: number
  *                     example: 1

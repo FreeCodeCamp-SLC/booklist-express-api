@@ -15,7 +15,9 @@ router.use('/api/lists',
 router.use('/api/books', 
 	// checkJwt, 
 	require('./booksRoute'));
-router.use('/api/booksByList', checkJwt, require('./booksByListRoute'));
+router.use('/api/booksByList', 
+	// checkJwt, 
+	require('./booksByListRoute'));
 router.use('/api/reading_status', checkJwt, require('./readingStatusRoute'));
 router.use('/api/allLists', 
 	// checkJwt, 
