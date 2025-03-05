@@ -31,7 +31,9 @@ router.use('/api/searchLists',
 router.use('/api/favorites',
   // checkJwt,
   require('./favoritesRoute'));
-router.use('/api/searchFavorites', checkJwt, require('./searchFavoritesRoute'));
+router.use('/api/searchFavorites',
+  // checkJwt,
+  require('./searchFavoritesRoute'));
 router.use('/api/profiles', checkJwt, require('./profilesRoute'));
 
 module.exports = router;

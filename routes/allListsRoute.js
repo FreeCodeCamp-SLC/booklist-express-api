@@ -10,6 +10,9 @@ const { allListsController } = require('../controllers');
  *   get:
  *     summary: Get all lists
  *     description: Retrieves a list of lists along with the total count of lists. Uses the `allListsController.getAllLists` function.
+ *     operationId: getAllLists
+ *     tags:
+ *       - Lists
  *     responses:
  *       200:
  *         description: A list of lists with the total count
@@ -56,9 +59,6 @@ const { allListsController } = require('../controllers');
  *                         description: The total number of lists
  *                         example: 1
  */
-
-
-
 
 router.route('/')
   .get(allListsController.getAllLists);

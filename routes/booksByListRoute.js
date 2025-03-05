@@ -10,6 +10,10 @@ const { booksByListController } = require('../controllers');
  *   get:
  *     summary: GET request to get books by a given list id
  *     description: GET request to get books by a given list id
+ *     operationId: getBooksByList
+ *     tags:
+ *       - Books
+ *       - Lists
  *     parameters:
  *       - name: listIds
  *         in: query

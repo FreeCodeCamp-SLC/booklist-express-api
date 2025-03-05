@@ -10,6 +10,9 @@ const { favoritesController } = require('../controllers');
  *   get:
  *     summary: GET request for user favorites
  *     description: GET request, paginated user favorites
+ *     operationId: getAllFavorites
+ *     tags:
+ *       - Favorites
  *     parameters:
  *       - name: booksItemCount
  *         in: query
@@ -87,8 +90,8 @@ const { favoritesController } = require('../controllers');
  *                       totalListCount:
  *                         type: integer
  *                         description: The total number of lists
- *                         example: 1  
- *             
+ *                         example: 1
+ *
  */
 
 router.route('/')
