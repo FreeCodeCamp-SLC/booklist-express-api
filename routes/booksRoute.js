@@ -10,6 +10,9 @@ const { booksController } = require('../controllers');
  *   post:
  *     summary: POST request to create a single book record in db
  *     description: POST request to create a single book record in db
+ *     opeationId: createOneBook
+ *     tags:
+ *       - Books
  *     requestBody:
  *       required: true
  *       content:
@@ -77,6 +80,9 @@ const { booksController } = require('../controllers');
  *   get:
  *     summary: Get all books
  *     description: Get all user books and totalCount
+ *     operationId: getAllBooks
+ *     tags:
+ *       - Books
  *     responses:
  *       200:
  *         description: Successful response
@@ -135,11 +141,14 @@ const { booksController } = require('../controllers');
  *                       totalListCount:
  *                         type: integer
  *                         description: The total number of lists
- *                         example: 1      
+ *                         example: 1
  * /books/:bookId:
- *   get:  
+ *   get:
  *     summary: Get one book by book id
  *     description: Get one book by book ID
+ *     operationId: getOneBook
+ *     tags:
+ *       - Books
  *     parameters:
  *       - name: bookId
  *         in: path
@@ -200,6 +209,9 @@ const { booksController } = require('../controllers');
  *                     type: string
  *   put:
  *     summary: Update a book
+ *     operationId: updateBook
+ *     tags:
+ *     - Books
  *     parameters:
  *       - name: bookId
  *         in: path
@@ -266,10 +278,14 @@ const { booksController } = require('../controllers');
  *                 - google_link
  *               - required:
  *                 - description
- *             description: At least one of the fields (author, title, image_url, pages, favorite, reding_status_id, date_started, date_finished, bookmark_page, rating, google_link, description) must be provided
+ *             description: |
+ *               At least one of the fields (author, title, image_url, pages, favorite, reding_status_id, date_started, date_finished, bookmark_page, rating, google_link, description) must be provided
  *   delete:
  *     summary: delete a book by id
  *     description: Delete a book by id
+ *     operationId: deleteBook
+ *     tags:
+ *       - Books
  *     parameters:
  *       - name: bookId
  *         in: path

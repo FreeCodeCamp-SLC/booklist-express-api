@@ -10,6 +10,9 @@ const { listsController } = require('../controllers');
  *   get:
  *     summary: Get all lists
  *     description: Retrieves a list of lists along with the total count of lists. Uses the `listsController.getAllLists` function.
+ *     operationId: getAllLists
+ *     tags:
+ *       - Lists
  *     responses:
  *       200:
  *         description: A list of lists with the total count
@@ -58,6 +61,9 @@ const { listsController } = require('../controllers');
  *   post:
  *     summary: POST request to create a list
  *     description: POST request to create a list
+ *     operationId: createOneList
+ *     tags:
+ *       - Lists
  *     requestBody:
  *       required: true
  *       content:
@@ -97,11 +103,14 @@ const { listsController } = require('../controllers');
  *                   description: string timestamp
  *                 modified_on:
  *                   type: string
- *                   description: string timestamp 
+ *                   description: string timestamp
  * /lists/{listId}:
  *   get:
  *     summary: Retrieve a specific list by id
  *     description: Endpoint to retrieve a specific list by id
+ *     operationId: getOneList
+ *     tags:
+ *       - Lists
  *     parameters:
  *       - name: listId
  *         in: path
@@ -149,6 +158,9 @@ const { listsController } = require('../controllers');
  *   put:
  *     summary: Update a specific list by id
  *     description: Endpoint for updating a specific list by id
+ *     operationId: updateList
+ *     tags:
+ *       - Lists
  *     parameters:
  *       - name: listId
  *         in: path
@@ -217,19 +229,22 @@ const { listsController } = require('../controllers');
  *   delete:
  *     summary: Delete a list
  *     description: Delete a list
+ *     operationId: deleteList
+ *     tags:
+ *       - Lists
  *     parameters:
  *       - name: listId
  *         in: path
  *         required: true
  *         description: The ID of the list to be deleted
- *         schema: 
+ *         schema:
  *           type: number
  *           example: 1
  *     responses:
  *       204:
  *         description: Successful response
  *       406:
- *         description: List not found     
+ *         description: List not found
  */
 
 router.route('/')

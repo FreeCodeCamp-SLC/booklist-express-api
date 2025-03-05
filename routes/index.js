@@ -25,7 +25,9 @@ router.use('/api/allLists',
 router.use('/api/searchBooks',
   // checkJwt,
   require('./searchBooksRoute'));
-router.use('/api/searchLists', checkJwt, require('./searchListsRoute'));
+router.use('/api/searchLists',
+  // checkJwt,
+  require('./searchListsRoute'));
 router.use('/api/favorites',
   // checkJwt,
   require('./favoritesRoute'));
