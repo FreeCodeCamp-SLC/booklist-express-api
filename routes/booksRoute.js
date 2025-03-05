@@ -6,7 +6,7 @@ const { booksController } = require('../controllers');
 
 /**
  * @swagger
- * /books:
+ * /api/books:
  *   post:
  *     summary: POST request to create a single book record in db
  *     description: POST request to create a single book record in db
@@ -142,7 +142,7 @@ const { booksController } = require('../controllers');
  *                         type: integer
  *                         description: The total number of lists
  *                         example: 1
- * /books/:bookId:
+ * /api/books/:bookId:
  *   get:
  *     summary: Get one book by book id
  *     description: Get one book by book ID

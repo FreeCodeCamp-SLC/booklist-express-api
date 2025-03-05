@@ -6,7 +6,7 @@ const { booksByListController } = require('../controllers');
 
 /**
  * @swagger
- * /booksByList:
+ * /api/booksByList:
  *   get:
  *     summary: GET request to get books by a given list id
  *     description: GET request to get books by a given list id

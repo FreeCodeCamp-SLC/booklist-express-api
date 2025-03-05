@@ -6,7 +6,7 @@ const { searchFavoritesController } = require('../controllers');
 
 /**
  * @swagger
- * /searchFavorites:
+ * /api/searchFavorites:
  *     get:
  *       summary: Search for books in favorites by title or author
  *       description: |

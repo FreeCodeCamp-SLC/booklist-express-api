@@ -6,7 +6,7 @@ const { searchListsController } = require('../controllers');
 
 /**
  * @swagger
- * /searchLists:
+ * /api/searchLists:
  *   get:
  *     summary: Search for lists
  *     description: |

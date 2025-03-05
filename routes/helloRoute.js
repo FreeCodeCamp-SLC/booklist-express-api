@@ -1,12 +1,12 @@
-const express = require("express")
+const express = require('express');
 
 const router = express.Router();
 
-const { helloController } = require("../controllers")
+const { helloController } = require('../controllers');
 
 /**
  * @swagger
- * /hello:
+ * /api/hello:
  *   get:
  *     summary: Example that returns 'hello'
  *     description: Example that returns 'hello' string
@@ -19,6 +19,6 @@ const { helloController } = require("../controllers")
  *               example: 'hello'
  */
 
-router.route('/').get(helloController.hello)
+router.route('/').get(helloController.hello);
 
-module.exports = router
+module.exports = router;

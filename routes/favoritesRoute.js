@@ -6,7 +6,7 @@ const { favoritesController } = require('../controllers');
 
 /**
  * @swagger
- * /favorites:
+ * /api/favorites:
  *   get:
  *     summary: GET request for user favorites
  *     description: GET request, paginated user favorites

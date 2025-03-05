@@ -49,4 +49,4 @@ Postman is a useful tool for API development, we can use it to test sending REST
 
 ## Documentation
 
-We're using Swagger to document the endpoints. Go to localhost:\<port>/api/api-docs to view the documentation.
+We're using Swagger to document the endpoints. Go to `localhost:\<port>/api/api-docs` to view the documentation.

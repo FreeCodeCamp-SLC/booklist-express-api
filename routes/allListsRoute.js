@@ -6,7 +6,7 @@ const { allListsController } = require('../controllers');
 
 /**
  * @swagger
- * /allLists:
+ * /api/allLists:
  *   get:
  *     summary: Get all lists
  *     description: Retrieves a list of lists along with the total count of lists. Uses the `allListsController.getAllLists` function.

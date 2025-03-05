@@ -6,7 +6,7 @@ const { searchBooksContoller } = require('../controllers');
 
 /**
  * @swagger
- * /searchBooks:
+ * /api/searchBooks:
  *     get:
  *       summary: Search for books by title or author
  *       description: |
