@@ -2,6 +2,10 @@ const express = require('express');
 const morgan = require('morgan');
 const { format } = require('date-fns');
 const cors = require('cors');
+const authenticateJWT = require("./utilities/authenticateJWT");
+const swaggerUi = require("swagger-ui-express")
+const swaggerConfig = require("./swaggerConfig")
+const checkJwt = require("./utilities/auth0");
 
 const routes = require('./routes');
 
@@ -23,9 +27,21 @@ app.use(
 //   }),
 // );
 
+app.use(
+  cors({    
+		origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow the methods your frontend will use
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify headers if needed
+  })
+);
+
 app.use(express.json());
 
+app.use(authenticateJWT)
+
 app.use(routes);
+
+app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerConfig))
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
@@ -38,6 +54,7 @@ app.use((err, req, res, _next) => {
     const errBody = { ...err, message: err.message };
     res.status(err.status).json(errBody);
   } else {
+		console.error("There was an error")
     res.status(500).json({ message: 'Internal Server Error' });
     if (err.name !== 'FakeError') console.log(err);
   }

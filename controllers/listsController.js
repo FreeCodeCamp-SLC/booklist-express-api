@@ -13,7 +13,10 @@ const updateableListFields = gatherTableUpdateableFields(listsTableFields);
 // @desc Get all lists
 // @route Get /api/lists
 // @access Private
-exports.getAllLists = async (req, res, next) => {
+exports.getAllLists = async (req, res, next) => {	
+	if(!req.user) {
+		return res.status(403).json({ message: "No user provided"})
+	}
   try {
     let listsItemCount = 5;
     let pageNumber = 1;
@@ -117,8 +120,8 @@ exports.updateList = (req, res, next) => {
         list_id: listId,
       })
       .update(toUpdate)
-      .then((results) => {
-        const result = results[0];
+      .then((results) => {				
+        const result = results[0];				
         res
           .status(200)
           .location(`${req.originalUrl}/${result.list_id}`)

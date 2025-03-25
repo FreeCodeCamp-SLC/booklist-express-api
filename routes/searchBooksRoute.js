@@ -4,6 +4,87 @@ const router = express.Router();
 
 const { searchBooksContoller } = require('../controllers');
 
+/**
+ * @swagger
+ * /api/searchBooks:
+ *     get:
+ *       summary: Search for books by title or author
+ *       description: |
+ *         This endpoint allows the user to search for books by title or author.
+ *         The results can be sorted based on the provided query parameters.
+ *       operationId: getSearchBooks
+ *       tags:
+ *         - Books
+ *       parameters:
+ *         - name: query
+ *           in: query
+ *           description: The search query string to find books by title or author.
+ *           required: true
+ *           schema:
+ *             type: string
+ *         - name: sortBy
+ *           in: query
+ *           description: The field by which to sort the results (e.g., title, author).
+ *           required: false
+ *           schema:
+ *             type: string
+ *             enum: [title, author]
+ *       responses:
+ *         '200':
+ *           description: A list of books matching the search query.
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     book_id:
+ *                       type: number
+ *                       example: 1
+ *                     user_id:
+ *                       type: string
+ *                       example: "google-oauth2|107881167133784281025"
+ *                     list_id:
+ *                       type: number
+ *                       example: 1
+ *                     author:
+ *                       type: string
+ *                       example: "J.R.R. Tolkien"
+ *                     title:
+ *                       type: string
+ *                       example: "The Lord of the Rings: The Fellowship of the Ring"
+ *                     image_url:
+ *                       type: string
+ *                     pages:
+ *                       type: number
+ *                     favorite:
+ *                       type: boolean
+ *                     reading_status_id:
+ *                       type: number
+ *                       example: 1
+ *                     date_started:
+ *                       type: string
+ *                     date_finished:
+ *                       type: string
+ *                     created_on:
+ *                       type: string
+ *                     modified_on:
+ *                       type: string
+ *                     bookmark_page:
+ *                       type: number
+ *                     rating:
+ *                       type: number
+ *                     google_link:
+ *                       type: string
+ *                     description:
+ *                       type: string
+ *         '400':
+ *           description: Bad request, invalid query parameters.
+ *         '500':
+ *           description: Internal server error.
+ */
+
 router.route('/')
   .get(searchBooksContoller.getSearchBooks);
 

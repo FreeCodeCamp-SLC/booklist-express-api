@@ -15,7 +15,7 @@ const updateableBooksFields = gatherTableUpdateableFields(booksTableFields);
 // @access Private
 
 exports.getAllBooks = async (req, res, next) => {
-  try {
+	try {
     const userId = req.user.sub;
     const { allBooks } = req.query;
     if (allBooks) {
@@ -111,7 +111,7 @@ exports.updateBook = (req, res, next) => {
     }
 
     const userId = req.user.sub;
-    const { bookId } = req.params;
+    const { bookId } = req.params;		
     const toUpdate = {};
 
     updateableBooksFields.forEach((field) => {
@@ -133,7 +133,7 @@ exports.updateBook = (req, res, next) => {
         const result = results[0];
         res
           .status(200)
-          .location(`${req.originalUrl}/${result.book_id}`)
+          .location(`${req.originalUrl}/${bookId}`)
           .json(result);
       })
       .catch((error) => {
