@@ -1,0 +1,20 @@
+{
+  "/api/hello": {
+    "get": {
+      "summary": "Example that returns 'hello'",
+      "description": "Example that returns 'hello' string",
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": "hello"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

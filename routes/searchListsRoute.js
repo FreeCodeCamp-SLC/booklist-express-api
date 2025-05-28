@@ -4,71 +4,7 @@ const router = express.Router();
 
 const { searchListsController } = require('../controllers');
 
-/**
- * @swagger
- * /api/searchLists:
- *   get:
- *     summary: Search for lists
- *     description: |
- *       Allows user to search lists
- *     operationId: getSearchLists
- *     tags:
- *       - Lists
- *     parameters:
- *       - name: query
- *         in: query
- *         description: The search query string to find lists
- *         required: true
- *         schema:
- *           type: string
- *       - name: sortBy
- *         in: query
- *         description: The field by which to sort the results
- *         required: false
- *         schema:
- *           type: string
- *           enum: [name, year]
- *     responses:
- *       200:
- *         description: A list of lists
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                         list_id:
- *                           type: integer
- *                           description: The unique ID of the list
- *                           example: 1
- *                         user_id:
- *                           type: string
- *                           description: The user ID of the list owner
- *                           example: "google-oauth2|117717101958145567060"
- *                         name:
- *                           type: string
- *                           description: The name of the list
- *                           example: "Non-Fiction"
- *                         year:
- *                           type: integer
- *                           description: The year of the list
- *                           example: 2021
- *                         created_on:
- *                           type: string
- *                           format: date-time
- *                           description: The timestamp when the list was created
- *                           example: "2025-02-24T01:44:03.301Z"
- *                         modified_on:
- *                           type: string
- *                           format: date-time
- *                           description: The timestamp when the list was last modified
- *                           example: "2025-02-24T01:44:17.040Z"
- *       400:
- *         description: Bad request
- *       500:
- *         description: Internal server error
- */
+// Swagger documentation moved to /swagger/paths/searchLists.json
 
 router.route('/')
   .get(searchListsController.getSearchLists);
