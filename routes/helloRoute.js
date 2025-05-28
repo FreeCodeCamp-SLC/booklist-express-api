@@ -4,20 +4,7 @@ const router = express.Router();
 
 const { helloController } = require('../controllers');
 
-/**
- * @swagger
- * /api/hello:
- *   get:
- *     summary: Example that returns 'hello'
- *     description: Example that returns 'hello' string
- *     responses:
- *       200:
- *         content:
- *           application/json:
- *             schema:
- *               type: string
- *               example: 'hello'
- */
+// Swagger documentation moved to /swagger/paths/hello.json
 
 router.route('/').get(helloController.hello);
 
